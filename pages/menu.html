@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcol — Menú</title>
+    <link rel="stylesheet" href="../frontend/src/styles/variables.css">
+    <link rel="stylesheet" href="../frontend/src/styles/global.css">
+    <link rel="stylesheet" href="../frontend/src/styles/components.css">
+    <link rel="stylesheet" href="../frontend/src/styles/pages/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img class="logo" src="../assets/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn-nav-cta" href="../login.html">Login</a>
+    </nav>
+
+    <div class="menu-header">
+        <h1 class="menu-titulo">NUESTRO <span class="resaltar">MENÚ</span></h1>
+        <p class="menu-subtitulo">Lo mejor de la calle, preparado con nivel.</p>
+    </div>
+
+    <div class="filtros">
+        <button class="filtro-btn activo" data-filtro="completos">Completos</button>
+        <button class="filtro-btn" data-filtro="hamburguesa">Hamburguesa</button>
+        <button class="filtro-btn" data-filtro="churrasco">Churrasco</button>
+        <button class="filtro-btn" data-filtro="yaroa">Yaroa</button>
+    </div>
+
+    <div class="productos-grid">
+
+        <!-- COMPLETOS -->
+        <div class="tarjeta-producto" data-categoria="completos" data-id="1"
+             data-nombre="Completo" data-precio="$1.700"
+             data-desc="Pan bueno, salchichón, tomate, palta y torta mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-completo-pequeño.png" alt="Completo">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Completo</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="completos" data-id="2"
+             data-nombre="Completo XL" data-precio="$1.700"
+             data-desc="Pan bueno, salchichón, palta-Chimichurri y torta mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-completo-xl.png" alt="Completo XL">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Completo XL</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="completos" data-id="3"
+             data-nombre="Italiano" data-precio="$1.700"
+             data-desc="Pan suave, salchicha, tomate fresco, palta y harta mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-italiano-peque.png" alt="Italiano">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Italiano</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="completos" data-id="4"
+             data-nombre="Italiano XL" data-precio="$1.700"
+             data-desc="Pan suave, salchicha, tomate fresco, palta y harta mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-italiano-xl.png" alt="Italiano XL">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Italiano XL</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="completos" data-id="5"
+             data-nombre="As Queso" data-precio="$1.700"
+             data-desc="Pan, vienesa, salchicha y queso derretido.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-as-queso-pequeño.png" alt="As Queso">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">As Queso</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="completos" data-id="6"
+             data-nombre="As Queso XL" data-precio="$1.700"
+             data-desc="Pan, vienesa, salchicha y queso derretido.">
+            <img class="imagen-producto" src="../assets/Menu/Completos/completo-as-queso-xl.png" alt="As Queso XL">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">As Queso XL</h3>
+                <span class="producto-precio">$1.700</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <!-- CHURRASCO -->
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="7"
+             data-nombre="Italiano" data-precio="$2.500"
+             data-desc="Pan, carne jugosa, tomate, palta y mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/churrasco-italiano.webp" alt="Italiano">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Italiano</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="8"
+             data-nombre="Chacarero" data-precio="$2.500"
+             data-desc="Pan, carne jugosa, porotos verdes, ají verde y tomate.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/chacarero.jpg" alt="Chacarero">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Chacarero</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="9"
+             data-nombre="Barros Luco" data-precio="$2.500"
+             data-desc="Pan, carne jugosa y queso fundido.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/barro luco.webp" alt="Barros Luco">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Barros Luco</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="10"
+             data-nombre="Churrasco a lo Pobre" data-precio="$2.500"
+             data-desc="Pan, carne jugosa, huevo frito, cebolla frita y papas fritas.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/a lo pobre.jpg" alt="Churrasco a lo Pobre">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Churrasco a lo Pobre</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="11"
+             data-nombre="Barros Jarpa" data-precio="$2.500"
+             data-desc="Pan, jamón cocido y queso fundido.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/barros jarpa.webp" alt="Barros Jarpa">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Barros Jarpa</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="churrasco" data-id="12"
+             data-nombre="Completo" data-precio="$2.500"
+             data-desc="Pan, carne jugosa, tomate, chucrut y mayo casera.">
+            <img class="imagen-producto" src="../assets/Menu/churrasco/completo.jpeg" alt="Completo Churrasco">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Completo</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <!-- HAMBURGUESAS -->
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="13"
+             data-nombre="Cheeseburger" data-precio="$2.500"
+             data-desc="Pan de hamburguesa, carne de res y queso fundido.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Cheeseburger.png" alt="Cheeseburger">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Cheeseburger</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="14"
+             data-nombre="Bacon Burger" data-precio="$2.500"
+             data-desc="Carne de res, tocino crujiente, queso cheddar, lechuga, tomate, cebolla y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Bacon-Burger.png" alt="Bacon Burger">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Bacon Burger</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="15"
+             data-nombre="Hamburguesa BBQ" data-precio="$2.500"
+             data-desc="Carne de res, salsa BBQ, queso cheddar, tocino, cebolla y tomate.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Hamburguesa-BBQ.png" alt="Hamburguesa BBQ">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Hamburguesa BBQ</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="16"
+             data-nombre="Hamburguesa Suiza" data-precio="$2.500"
+             data-desc="Carne de res, champiñones salteados, queso suizo, cebolla y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Hamburguesa Suiza.jpg" alt="Hamburguesa Suiza">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Hamburguesa Suiza</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="17"
+             data-nombre="Hawaiana" data-precio="$2.500"
+             data-desc="Carne de res, jamón, piña, queso cheddar, lechuga y salsa.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Hamburguesa Hawaiana.jpg" alt="Hawaiana">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Hawaiana</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="hamburguesa" data-id="18"
+             data-nombre="Stacker" data-precio="$2.500"
+             data-desc="Tres carnes de res, queso cheddar, lechuga, tomate, cebolla y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/hamburguesas/Hamburguesa Stacker.webp" alt="Stacker">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Stacker</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <!-- YAROAS -->
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="19"
+             data-nombre="Yaroa de pollo" data-precio="$2.500"
+             data-desc="Papas fritas, pollo desmenuzado, queso y mayonesa/ketchup.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/Yaroa-pollo.avif" alt="Yaroa de pollo">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa de pollo</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="20"
+             data-nombre="Yaroa de carne molida" data-precio="$2.500"
+             data-desc="Papas fritas, carne molida, queso y mayonesa/ketchup.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/yaroa-carne-molida.jpg" alt="Yaroa de carne molida">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa de carne molida</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="21"
+             data-nombre="Yaroa mixta" data-precio="$2.500"
+             data-desc="Papas fritas, pollo y carne, queso y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/yaroa-mixta.jpeg" alt="Yaroa mixta">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa mixta</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="22"
+             data-nombre="Yaroa de longaniza" data-precio="$2.500"
+             data-desc="Papas fritas, longaniza, queso y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/yaroa-longaniza.jpg" alt="Yaroa de longaniza">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa de longaniza</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="23"
+             data-nombre="Yaroa de res y tocino" data-precio="$2.500"
+             data-desc="Papas fritas, carne de res, tocino, queso y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/yaroa-res-tocino.png" alt="Yaroa de res y tocino">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa de res y tocino</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-producto" data-categoria="yaroa" data-id="24"
+             data-nombre="Yaroa vegetariana" data-precio="$2.500"
+             data-desc="Papas fritas, vegetales salteados, queso y salsas.">
+            <img class="imagen-producto" src="../assets/Menu/Yaroa/yaroa-vegetariana.png" alt="Yaroa vegetariana">
+            <div class="producto-card-body">
+                <h3 class="producto-nombre">Yaroa vegetariana</h3>
+                <span class="producto-precio">$2.500</span>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL PRODUCTO -->
+    <div class="modal-producto-overlay" id="modal-producto-overlay">
+        <div class="modal-producto" id="modal-producto">
+            <button class="modal-producto-cerrar" id="modal-cerrar">✕</button>
+            <img class="modal-producto-imagen" id="modal-img" src="" alt="">
+            <div class="modal-producto-body">
+                <h2 class="modal-producto-nombre" id="modal-nombre"></h2>
+                <p class="modal-producto-desc" id="modal-desc"></p>
+                <span class="modal-producto-precio" id="modal-precio"></span>
+                <div class="modal-producto-nota">
+                    <label>Sin:</label>
+                    <input type="text" id="modal-nota" placeholder="Ej: sin tomate, sin cebolla...">
+                </div>
+                <div class="modal-producto-footer">
+                    <div class="modal-cantidad">
+                        <button class="modal-btn-cantidad" id="modal-menos">−</button>
+                        <span class="modal-numero-cantidad" id="modal-cantidad">1</span>
+                        <button class="modal-btn-cantidad" id="modal-mas">+</button>
+                    </div>
+                    <button class="modal-btn-agregar" id="modal-btn-agregar">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL CARRITO -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+
+    <div class="panel-carrito" id="panel-carrito">
+        <div class="carrito-header">
+            <div class="carrito-titulo-wrap">
+                <img class="carrito-icono" src="../assets/Carrito/carrito-de-compras.png" alt="Carrito">
+                <h2 class="carrito-titulo">Tu pedido</h2>
+            </div>
+            <button class="carrito-cerrar" id="carrito-cerrar">✕</button>
+        </div>
+        <div class="carrito-items" id="carrito-items">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+        <div class="envio-gratis-wrap">
+            <div class="envio-gratis-texto">
+                <span id="envio-gratis-msg">🚀 Te faltan para envío gratis</span>
+            </div>
+            <div class="envio-gratis-barra">
+                <div class="envio-gratis-progreso" id="envio-progreso"></div>
+            </div>
+        </div>
+        <div class="carrito-subtotal">
+            <span>Subtotal:</span>
+            <span id="carrito-total">$0</span>
+        </div>
+        <a class="btn-finalizar" href="checkout.html">
+            Finalizar pedido
+            <img class="icono-flecha" src="../assets/Carrito/flecha.png" alt="flecha">
+        </a>
+    </div>
+
+    <button class="btn-carrito-flotante" id="btn-carrito-flotante">
+        <img class="icono-carrito-flotante" src="../assets/Carrito/carrito-de-compras.png" alt="Carrito">
+        <span id="carrito-contador">0</span>
+    </button>
+
+    <footer class="footer">
+        <p>© 2026 Calcol — El verdadero sabor Dominicano</p>
+    </footer>
+
+    <script src="../frontend/src/utils/auth.js"></script>
+    <script src="../frontend/src/utils/formatters.js"></script>
+    <script src="../frontend/src/components/cart.js"></script>
+    <script src="../frontend/src/pages/menu.js"></script>
+    <script src="../frontend/src/components/navbar.js"></script>
+</body>
+</html>

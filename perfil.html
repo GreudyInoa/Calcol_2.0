@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcol — Mi Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="frontend/src/styles/variables.css">
+    <link rel="stylesheet" href="frontend/src/styles/components.css">
+    <link rel="stylesheet" href="frontend/src/styles/pages/perfil.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img class="logo" src="assets/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pages/menu.html">Menú</a></li>
+            <li><a href="pages/promociones.html">Promociones</a></li>
+            <li><a href="pages/nosotros.html">Nosotros</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn-nav-cta" href="login.html">Login</a>
+    </nav>
+
+    <div class="perfil-wrap">
+        <div class="perfil-card">
+            <div class="perfil-banner">
+                <div class="avatar-wrap">
+                    <div class="avatar" id="avatar-iniciales"></div>
+                    <div class="avatar-info">
+                        <h1 id="perfil-nombre">Cargando...</h1>
+                        <span class="badge-rol" id="perfil-rol"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil-contenido">
+                <div class="datos-wrap">
+                    <div class="seccion-titulo-wrap">
+                        <h2 class="seccion-titulo">Mis datos</h2>
+                        <button class="btn-editar-perfil" id="btn-editar-perfil">✏️ Editar</button>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Nombre</span>
+                        <span class="dato-valor" id="dato-nombre"></span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Correo</span>
+                        <span class="dato-valor" id="dato-email"></span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Teléfono</span>
+                        <span class="dato-valor" id="dato-tel"></span>
+                    </div>
+                    <div class="dato-item" id="item-rol">
+                        <span class="dato-label">Rol</span>
+                        <span class="dato-valor" id="dato-rol"></span>
+                    </div>
+                </div>
+
+                <div class="acciones-wrap">
+                    <button class="btn-cerrar" id="btn-cerrar">
+                        <img src="assets/General/icono-perfil.png" alt="" width="18" height="18"/>
+                        Cerrar sesión
+                    </button>
+                    <button class="btn-eliminar" id="btn-eliminar">
+                        <img src="assets/Carrito/bote-de-basura.png" alt="eliminar" width="18" height="18"/>
+                        Solicitar eliminación de cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR PERFIL -->
+    <div class="modal-overlay" id="modal-editar-overlay">
+        <div class="modal modal-editar">
+            <h3>Editar información</h3>
+            <div class="editar-seccion">
+                <h4 class="editar-seccion-titulo">Información personal</h4>
+                <div class="editar-grid">
+                    <div class="editar-campo editar-campo-full">
+                        <label>Nombre completo</label>
+                        <input type="text" id="edit-nombre" class="editar-input" placeholder="Tu nombre completo">
+                        <span class="editar-error" id="err-nombre"></span>
+                    </div>
+                    <div class="editar-campo editar-campo-full">
+                        <label>Teléfono</label>
+                        <div class="editar-tel-wrap">
+                            <span class="editar-prefijo">+56 9</span>
+                            <input type="text" id="edit-tel" class="editar-input" placeholder="1234 5678" maxlength="9">
+                        </div>
+                        <span class="editar-error" id="err-tel"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-btns">
+                <button class="btn-cancelar" id="btn-cancelar-editar">Cancelar</button>
+                <button class="btn-guardar-editar" id="btn-guardar-editar">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CERRAR SESIÓN -->
+    <div class="modal-overlay" id="modal-cerrar-overlay">
+        <div class="modal">
+            <h3>¿Cerrar sesión?</h3>
+            <p>¿Estás seguro que deseas cerrar tu sesión?</p>
+            <div class="modal-btns">
+                <button class="btn-cancelar" id="btn-cancelar-cerrar">Cancelar</button>
+                <button class="btn-confirmar-eliminar" id="btn-confirmar-cerrar">Sí, cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ELIMINACIÓN -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h3>Eliminar cuenta</h3>
+            <p>Para eliminar tu cuenta envíanos un correo a <strong>contacto@calcol.cl</strong> con el asunto <strong>"Solicitud de eliminación de cuenta"</strong> desde el correo con el que te registraste.</p>
+            <p style="margin-top:10px; color:rgba(255,255,255,0.5); font-size:13px;">Procesaremos tu solicitud en un plazo de 48 horas.</p>
+            <div class="modal-btns">
+                <button class="btn-guardar-editar" id="btn-cancelar">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="frontend/src/utils/auth.js"></script>
+    <script src="frontend/src/utils/formatters.js"></script>
+    <script src="frontend/src/services/api.js"></script>
+    <script src="frontend/src/pages/perfil.js"></script>
+    <script src="frontend/src/components/navbar.js"></script>
+</body>
+</html>

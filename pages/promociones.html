@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones — Calcol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../frontend/src/styles/variables.css">
+    <link rel="stylesheet" href="../frontend/src/styles/global.css">
+    <link rel="stylesheet" href="../frontend/src/styles/components.css">
+    <link rel="stylesheet" href="../frontend/src/styles/pages/promociones.css">
+    <link rel="stylesheet" href="../frontend/src/styles/pages/menu.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img class="logo" src="../assets/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn-nav-cta" href="../login.html">Login</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="promo-hero">
+        <div class="promo-hero-bg"></div>
+        <div class="promo-hero-overlay"></div>
+        <div class="promo-hero-contenido">
+            <span class="promo-hero-badge">🔥 Ofertas del día</span>
+            <h1 class="promo-hero-titulo">OFERTAS<br><span>ESPECIALES</span></h1>
+            <p class="promo-hero-sub">Combos irresistibles por tiempo limitado</p>
+            <a href="menu.html" class="promo-hero-btn">
+                VER MENÚ
+                <img src="../assets/Promociones/flecha-derecha.png" alt="">
+            </a>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="promo-filtros-wrap">
+            <button class="promo-filtro-btn activo" data-filtro="todos">Todos</button>
+            <button class="promo-filtro-btn" data-filtro="yaroa">Yaroas</button>
+            <button class="promo-filtro-btn" data-filtro="hamburguesa">Hamburguesas</button>
+            <button class="promo-filtro-btn" data-filtro="completo">Completos</button>
+        </div>
+    </section>
+
+    <!-- PROMOS -->
+    <section class="promo-seccion">
+        <h2 class="promo-seccion-titulo">🔥 Promos <span>del momento</span></h2>
+
+        <div class="promo-grid">
+
+            <!-- YAROA 1 -->
+            <div class="promo-card visible" data-categoria="yaroa" data-id="25">
+                <span class="promo-badge">-30%</span>
+                <img class="promo-card-imagen" src="../assets/Menu/Yaroa/Yaroa-pollo.avif" alt="Combo Yaroa Full">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Combo Yaroa Full</h3>
+                    <p class="promo-card-desc">Yaroa de pollo + bebida + postre</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$4.500</span>
+                        <span class="promo-precio-ahora">$3.200</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- HAMBURGUESA 1 -->
+            <div class="promo-card visible" data-categoria="hamburguesa" data-id="26">
+                <span class="promo-badge amarillo">¡Promo!</span>
+                <img class="promo-card-imagen" src="../assets/Menu/hamburguesas/Bacon Burger.jpg" alt="Combo Burger Caliente">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Combo Burger Caliente</h3>
+                    <p class="promo-card-desc">Bacon Burger + papas fritas + bebida</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$5.000</span>
+                        <span class="promo-precio-ahora">$3.800</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- COMPLETO 1 -->
+            <div class="promo-card visible" data-categoria="completo" data-id="27">
+                <span class="promo-badge">-20%</span>
+                <img class="promo-card-imagen" src="../assets/Menu/Completos/completo-completo-pequeño.png" alt="Combo Doble Completo">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Combo Doble Completo</h3>
+                    <p class="promo-card-desc">2 completos + bebida familiar</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$4.200</span>
+                        <span class="promo-precio-ahora">$3.400</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- HAMBURGUESA 2 -->
+            <div class="promo-card visible" data-categoria="hamburguesa" data-id="28">
+                <span class="promo-badge">-30%</span>
+                <img class="promo-card-imagen" src="../assets/Menu/hamburguesas/Hamburguesa BBQ.webp" alt="Combo Burger Familiar">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Combo Burger Familiar</h3>
+                    <p class="promo-card-desc">2 BBQ Burger + papas + 2 bebidas</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$8.000</span>
+                        <span class="promo-precio-ahora">$5.600</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- YAROA 2 -->
+            <div class="promo-card visible" data-categoria="yaroa" data-id="29">
+                <span class="promo-badge amarillo">¡Promo!</span>
+                <img class="promo-card-imagen" src="../assets/Menu/Yaroa/yaroa-carne-molida.jpg" alt="Yaroa Carne">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Yaroa Carne Especial</h3>
+                    <p class="promo-card-desc">Yaroa de carne molida + bebida</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$4.000</span>
+                        <span class="promo-precio-ahora">$2.900</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- COMPLETO 2 -->
+            <div class="promo-card visible" data-categoria="completo" data-id="30">
+                <span class="promo-badge">-25%</span>
+                <img class="promo-card-imagen" src="../assets/Menu/Completos/completo-italiano-peque.png" alt="Italiano Combo">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Italiano Combo</h3>
+                    <p class="promo-card-desc">Italiano XL + bebida + postre</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$3.800</span>
+                        <span class="promo-precio-ahora">$2.850</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- YAROA 3 -->
+            <div class="promo-card visible" data-categoria="yaroa" data-id="31">
+                <span class="promo-badge">-20%</span>
+                <img class="promo-card-imagen" src="../assets/Menu/Yaroa/yaroa-mixta.jpeg" alt="Yaroa Mixta">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Yaroa Mixta Combo</h3>
+                    <p class="promo-card-desc">Yaroa mixta + bebida</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$3.500</span>
+                        <span class="promo-precio-ahora">$2.800</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+            <!-- HAMBURGUESA 3 -->
+            <div class="promo-card visible" data-categoria="hamburguesa" data-id="32">
+                <span class="promo-badge amarillo">¡Promo!</span>
+                <img class="promo-card-imagen" src="../assets/Menu/hamburguesas/Hamburguesa Stacker.webp" alt="Stacker Combo">
+                <div class="promo-card-body">
+                    <h3 class="promo-card-nombre">Stacker Combo</h3>
+                    <p class="promo-card-desc">Stacker triple + papas + bebida</p>
+                    <div class="promo-card-precios">
+                        <span class="promo-precio-antes">$6.500</span>
+                        <span class="promo-precio-ahora">$4.900</span>
+                    </div>
+                    <button class="promo-card-btn">Pedir ahora</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- HAPPY HOUR -->
+        <div class="happy-hour">
+            <div class="happy-hour-bg"></div>
+            <div class="happy-hour-overlay"></div>
+
+            <div class="happy-hour-texto">
+                <p class="happy-hour-label">⏰ Solo por tiempo limitado</p>
+                <h2 class="happy-hour-titulo">Happy Hour</h2>
+                <div class="happy-hour-hora">6pm — 9pm</div>
+                <p class="happy-hour-desc">Todos los días de lunes a viernes. Descuento especial en todos nuestros combos durante las horas de mayor sabor.</p>
+            </div>
+
+            <div class="happy-hour-descuento">
+                <div class="happy-hour-numero">25%</div>
+                <div class="happy-hour-off">OFF</div>
+                <p class="happy-hour-aplica">En todos los combos</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- MODAL PROMO -->
+    <div class="modal-overlay" id="promo-modal-overlay"></div>
+
+    <div class="promo-modal" id="promo-modal">
+        <button class="promo-modal-cerrar" id="promo-modal-cerrar">✕</button>
+        <img class="promo-modal-imagen" id="promo-modal-imagen" src="" alt="">
+        <div class="promo-modal-body">
+            <span class="promo-badge" id="promo-modal-badge"></span>
+            <h3 class="promo-modal-nombre" id="promo-modal-nombre"></h3>
+            <p class="promo-modal-desc" id="promo-modal-desc"></p>
+            <div class="promo-card-precios">
+                <span class="promo-precio-antes" id="promo-modal-antes"></span>
+                <span class="promo-precio-ahora" id="promo-modal-ahora"></span>
+            </div>
+
+            <div class="promo-modal-footer">
+                <div class="promo-modal-cantidad">
+                    <button class="promo-modal-menos">−</button>
+                    <span class="promo-modal-num" id="promo-modal-cantidad">1</span>
+                    <button class="promo-modal-mas">+</button>
+                </div>
+                <button class="promo-modal-btn" id="promo-modal-agregar">
+                    🛒 Agregar al carrito
+                </button>
+            </div>
+            <button class="promo-modal-btn-secundario" id="promo-modal-seguir" style="display:none">
+                + Seguir agregando
+            </button>
+        </div>
+    </div>
+
+    <!-- PANEL DEL CARRITO -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+
+    <div class="panel-carrito" id="panel-carrito">
+        <div class="carrito-header">
+            <div class="carrito-titulo-wrap">
+                <img class="carrito-icono" src="../assets/Carrito/carrito-de-compras.png" alt="Carrito">
+                <h2 class="carrito-titulo">Tu pedido</h2>
+            </div>
+            <button class="carrito-cerrar" id="carrito-cerrar">✕</button>
+        </div>
+
+        <div class="carrito-items" id="carrito-items">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+
+        <div class="envio-gratis-wrap">
+            <div class="envio-gratis-texto">
+                <span id="envio-gratis-msg">🚀 Te faltan <strong id="envio-falta">$3.000</strong> para envío gratis</span>
+            </div>
+            <div class="envio-gratis-barra">
+                <div class="envio-gratis-progreso" id="envio-progreso"></div>
+            </div>
+        </div>
+
+        <div class="carrito-subtotal">
+            <span>Subtotal:</span>
+            <span id="carrito-total">$0</span>
+        </div>
+
+        <a class="btn-finalizar" href="checkout.html">
+            Finalizar pedido
+            <img class="icono-flecha" src="../assets/Carrito/flecha.png" alt="flecha">
+        </a>
+    </div>
+
+    <button class="btn-carrito-flotante" id="btn-carrito-flotante">
+        <img class="icono-carrito-flotante" src="../assets/Carrito/carrito-de-compras.png" alt="Carrito">
+        <span id="carrito-contador">0</span>
+    </button>
+
+    <footer class="footer">
+        <p>© 2026 Calcol — El verdadero sabor Dominicano</p>
+    </footer>
+
+    <script src="../frontend/src/utils/auth.js"></script>
+    <script src="../frontend/src/utils/formatters.js"></script>
+    <script src="../frontend/src/components/cart.js"></script>
+    <script src="../frontend/src/pages/promociones.js"></script>
+    <script src="../frontend/src/components/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Environment
+.env
+
+# Dependencies
+backend/vendor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

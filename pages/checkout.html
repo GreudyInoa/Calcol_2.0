@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcol — Tu Carrito</title>
+    <link rel="stylesheet" href="../frontend/src/styles/variables.css">
+    <link rel="stylesheet" href="../frontend/src/styles/global.css">
+    <link rel="stylesheet" href="../frontend/src/styles/components.css">
+    <link rel="stylesheet" href="../frontend/src/styles/pages/checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img class="logo" src="../assets/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn-nav-cta" href="../login.html">Login</a>
+    </nav>
+
+    <div class="progreso-wrap">
+        <div class="progreso-step activo">
+            <div class="progreso-circulo">1</div>
+            <span>Carrito</span>
+        </div>
+        <div class="progreso-linea"></div>
+        <div class="progreso-step">
+            <div class="progreso-circulo">2</div>
+            <span>Entrega</span>
+        </div>
+        <div class="progreso-linea"></div>
+        <div class="progreso-step">
+            <div class="progreso-circulo">3</div>
+            <span>Pago</span>
+        </div>
+        <div class="progreso-linea"></div>
+        <div class="progreso-step">
+            <div class="progreso-circulo">4</div>
+            <span>Confirmación</span>
+        </div>
+    </div>
+
+    <div class="checkout-contenedor">
+
+        <div class="checkout-izquierda">
+
+            <div class="checkout-card">
+                <div class="checkout-card-header">
+                    <img src="../assets/Carrito/carrito-de-compras.png" alt="Carrito">
+                    <h2 class="checkout-card-titulo">Tu carrito</h2>
+                    <span class="resumen-badge" id="carrito-badge">0 artículos</span>
+                </div>
+                <div id="carrito-items">
+                    <p class="carrito-vacio">Tu carrito está vacío</p>
+                </div>
+            </div>
+
+            <div class="checkout-card">
+                <div class="checkout-card-header">
+                    <img src="../assets/Carrito/cruz-tenedor.png" alt="Extras">
+                    <h2 class="checkout-card-titulo">Extras</h2>
+                </div>
+                <div class="extra-item">
+                    <div class="extra-info">
+                        <img src="../assets/Carrito/tenedor-cruz-colores.png" alt="Extras">
+                        <div>
+                            <strong>Cubiertos</strong>
+                            <span>Incluye cubiertos desechables</span>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pedir-cubiertos">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="extra-item">
+                    <div class="extra-info">
+                        <img src="../assets/Carrito/salsa-de-casa.png" alt="Salsa">
+                        <div>
+                            <strong>Salsa de la casa</strong>
+                            <span>Nuestra salsa criolla especial</span>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pedir-salsa">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="checkout-derecha">
+
+            <div class="entrega-badge">
+                <span class="entrega-icono">⏱</span>
+                <div>
+                    <strong>Tiempo estimado de entrega</strong>
+                    <span>30 – 45 minutos</span>
+                </div>
+            </div>
+
+            <div class="checkout-card total-card">
+                <h2 class="checkout-card-titulo" style="margin-bottom:16px">Resumen</h2>
+                <div class="checkout-total-fila">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">$0</span>
+                </div>
+                <div class="checkout-total-fila">
+                    <span>Costo de envío</span>
+                    <span>$2.000</span>
+                </div>
+                <div class="checkout-total-fila checkout-total-final">
+                    <span>Total</span>
+                    <span id="checkout-total">$0</span>
+                </div>
+                <button class="btn-hacer-pedido" id="btn-continuar">
+                    Continuar
+                    <img src="../assets/Carrito/flecha.png" alt="→">
+                </button>
+                <a class="btn-seguir-comprando" href="menu.html">
+                    <img src="../assets/Login/flecha-izquierda.png" alt="←">
+                    Seguir comprando
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Calcol — El verdadero sabor Dominicano</p>
+    </footer>
+
+    <script src="../frontend/src/utils/auth.js"></script>
+    <script src="../frontend/src/utils/formatters.js"></script>
+    <script src="../frontend/src/pages/checkout.js"></script>
+    <script src="../frontend/src/components/navbar.js"></script>
+</body>
+</html>
