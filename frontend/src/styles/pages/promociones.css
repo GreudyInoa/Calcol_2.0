@@ -550,3 +550,62 @@ body {
     background: #000;
     border-top: 1px solid rgba(255,100,0,0.2);
 }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .promo-hero-contenido { padding: 40px 32px; }
+
+    .promo-hero-titulo { font-size: 60px; }
+
+    .promo-filtros-wrap {
+        position: relative;
+        padding: 12px 32px;
+        flex-wrap: wrap;
+    }
+
+    .promo-seccion { padding: 40px 32px; }
+
+    .promo-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .happy-hour {
+        flex-direction: column;
+        padding: 40px 32px;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .happy-hour-overlay { background: rgba(0,0,0,0.8); }
+
+    .happy-hour-desc { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .promo-hero-titulo { font-size: 48px; }
+
+    .promo-hero-contenido { padding: 32px 20px; }
+
+    .promo-filtros-wrap { padding: 12px 20px; }
+
+    .promo-seccion { padding: 32px 20px; }
+
+    .promo-seccion-titulo { font-size: 28px; }
+
+    .promo-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .happy-hour-hora { font-size: 52px; }
+
+    .happy-hour-titulo { font-size: 40px; }
+}
+
+@media (max-width: 768px) {
+    .btn-carrito-flotante {
+        bottom: 16px;
+        right: 8px;
+        padding: 8px 12px;
+    }
+
+    .icono-carrito-flotante {
+        width: 46px;
+        height: 46px;
+    }
+}

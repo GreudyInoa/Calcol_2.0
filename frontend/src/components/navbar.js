@@ -25,4 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
             link.style.color = '#FFD700';
         }
     });
+
+    const navbar   = document.querySelector('.navbar');
+    const navLinks = document.querySelector('.nav-links');
+
+    const hamburger = document.createElement('button');
+    hamburger.className = 'nav-hamburger';
+    hamburger.setAttribute('aria-label', 'Menú');
+    hamburger.innerHTML = '<span></span><span></span><span></span>';
+    navbar.insertBefore(hamburger, navLinks);
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('abierto');
+        navLinks.classList.toggle('abierto');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            hamburger.classList.remove('abierto');
+            navLinks.classList.remove('abierto');
+        });
+    });
 });

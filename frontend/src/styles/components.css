@@ -94,3 +94,107 @@
   font-size: 13px;
   color: var(--blanco);
 }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 200;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.nav-hamburger.abierto span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.abierto span:nth-child(2) { opacity: 0; }
+.nav-hamburger.abierto span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #000;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        display: none;
+        z-index: 150;
+        border-bottom: 1px solid rgba(255,100,0,0.3);
+        transform: none;
+    }
+
+    .nav-links.abierto { display: flex; }
+
+    .nav-links li { width: 100%; text-align: center; }
+
+    .nav-links a {
+        display: block;
+        padding: 16px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a:hover {
+        background: rgba(255,100,0,0.1);
+        color: #FFD700;
+    }
+
+    /* Ocultar botón login en móvil */
+    .btn-nav-cta {
+    order: 3;
+    margin-left: auto;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+}
+
+    /* Si está logueado, mostrar solo el ícono del perfil */
+    .btn-nav-cta.logueado {
+        display: flex;
+        font-size: 0;
+        padding: 4px;
+        border: none;
+        background: transparent;
+        gap: 0;
+    }
+
+    .btn-nav-cta.logueado .icono-nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+  .nav-hamburger { order: 1; }
+
+    .logo { 
+        order: 2; 
+        height: 44px; 
+        position: static;
+        transform: none;
+    }
+
+    .btn-nav-cta.logueado { 
+        order: 3; 
+        margin-left: auto;
+    }
+
+}

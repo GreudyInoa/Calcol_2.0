@@ -906,3 +906,16 @@ body {
     .progreso-wrap { padding: 20px 16px 0; }
     .progreso-linea { max-width: 40px; }
 }
+
+@media (max-width: 480px) {
+    .progreso-step span { display: none; }
+
+    .entrega-grid { grid-template-columns: 1fr; }
+
+    .modal-tarjeta {
+        width: calc(100% - 32px);
+        padding: 24px 16px;
+    }
+
+    .tarjeta-input-fila { flex-direction: column; }
+}
