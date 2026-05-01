@@ -22,7 +22,7 @@ body {
         "text image"
         "btns image";
     gap: 0 40px;
-    padding: clamp(16px, 2vw, 28px) clamp(40px, 7vw, 80px) clamp(40px, 6vw, 80px);
+    padding: 0 clamp(40px, 7vw, 80px) clamp(40px, 6vw, 80px);
     min-height: 70vh;
     overflow: hidden;
 }
@@ -51,6 +51,7 @@ body {
     display: flex;
     flex-direction: column;
     align-self: start;
+    padding-top: 40px;
 }
 
 .hero-sub {
@@ -96,6 +97,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    margin-top: -40px;
 }
 
 .hero-hamburguesa {

@@ -108,7 +108,7 @@ async function handleLogin() {
             lPass.classList.add('error');
             return;
         }
-        setSession(data.usuario);
+        setSession(data);
         manejarExito(btnLogin, data.usuario.nombre);
     } catch {
         mostrarAlerta(aLogin, aLoginT, 'Error de conexión con el servidor.');
@@ -138,8 +138,9 @@ async function handleRegistro() {
             if (data.error.includes('correo')) rEmail.classList.add('error');
             return;
         }
-        setSession(data.usuario);
+        setSession(data);
         manejarExito(btnReg, data.usuario.nombre);
+
     } catch {
         mostrarAlerta(aReg, aRegT, 'Error de conexión con el servidor.');
     }

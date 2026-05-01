@@ -1,15 +1,20 @@
 <?php
-class ProductoController {
-    public static function listar(PDO $pdo): void {
-        $categoria = $_GET['categoria'] ?? '';
+namespace App\Controllers;
 
-        if ($categoria) {
-            $stmt = $pdo->prepare('SELECT * FROM productos WHERE categoria = ? AND agotado = 0');
-            $stmt->execute([$categoria]);
-        } else {
-            $stmt = $pdo->query('SELECT * FROM productos WHERE agotado = 0');
+use App\Services\ProductoService;
+use App\Utils\Response;
+
+class ProductoController
+{
+    public function listar(array $request): void
+    {
+        try {
+            $categoria = trim($request['_query']['categoria'] ?? '');
+            $service   = new ProductoService();
+            Response::success(['productos' => $service->listar($categoria)]);
+        } catch (\Throwable $e) {
+            error_log('[Producto] ' . $e->getMessage());
+            Response::serverError();
         }
-
-        Response::success(['productos' => $stmt->fetchAll()]);
     }
 }
