@@ -76,7 +76,11 @@ document.getElementById('promo-modal-agregar').addEventListener('click', () => {
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarrito();
     cerrarPromoModal();
-    abrirCarrito();
+
+    // Solo abrir el panel lateral en desktop
+    if (!esMovilOTablet()) {
+        abrirCarrito();
+    }
 });
 
 document.getElementById('promo-modal-seguir').addEventListener('click', cerrarPromoModal);

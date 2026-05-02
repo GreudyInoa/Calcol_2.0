@@ -1,25 +1,49 @@
 :root {
+  /* ================================
+     COLORES
+     ================================ */
   --rojo: #D92B2B;
   --rojo-oscuro: #b81f1f;
   --negro: #111111;
   --negro-transparente: rgba(0, 0, 0, 0.4);
-  --sombra-fuerte: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --sombra-imagen: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.4));
   --blanco: #ffffff;
   --gris: #555555;
   --gris-claro: #aaaaaa;
   --gris-borde: #e0e0e0;
   --gris-input: #fafafa;
 
-  --fondo-naranja: 
+  /* ================================
+     SOMBRAS
+     ================================ */
+  --sombra-fuerte: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --sombra-imagen: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.4));
+
+  /* ================================
+     FONDOS
+     ================================ */
+  --fondo-naranja:
     radial-gradient(circle at top left, rgb(249, 210, 54) 20%, transparent 60%),
     radial-gradient(circle at bottom right, rgb(255, 180, 80) 20%, transparent 80%),
     radial-gradient(circle at center, rgb(230, 120, 10) 10%, transparent 70%),
     rgb(213, 96, 0);
 
-  --fuente-titulo: 'Bebas Neue', sans-serif;
-  --fuente-cuerpo: 'Nunito', sans-serif;
+  /* ================================
+     TIPOGRAFÍA
+     ================================ */
+  --fuente-titulo:   'Bebas Neue', sans-serif;
+  --fuente-cuerpo:   'Nunito', sans-serif;
   --fuente-producto: 'Oswald', sans-serif;
+
+  /* ================================
+     Z-INDEX SYSTEM
+     Orden: dropdown < overlay < panel < modal < toast
+     ================================ */
+  --z-base:      1;
+  --z-dropdown:  100;
+  --z-overlay:   200;
+  --z-panel:     300;
+  --z-modal:     400;
+  --z-toast:     500;
 }
 
 * {

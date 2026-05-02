@@ -370,6 +370,10 @@ body {
     margin-top: 8px;
 }
 
+/* ================================
+   MODALES
+   ================================ */
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -377,7 +381,7 @@ body {
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 999;
+    z-index: var(--z-overlay);
     backdrop-filter: blur(4px);
 }
 
@@ -393,7 +397,7 @@ body {
     border-radius: 20px;
     width: 460px;
     max-width: 90vw;
-    z-index: 1000;
+    z-index: var(--z-modal);
     display: none;
     flex-direction: column;
     overflow: hidden;
@@ -551,7 +555,10 @@ body {
     border-top: 1px solid rgba(255,100,0,0.2);
 }
 
-/* ── RESPONSIVE ── */
+/* ================================
+   RESPONSIVE
+   ================================ */
+
 @media (max-width: 900px) {
     .promo-hero-contenido { padding: 40px 32px; }
 

@@ -29,21 +29,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar   = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
 
-    const hamburger = document.createElement('button');
-    hamburger.className = 'nav-hamburger';
-    hamburger.setAttribute('aria-label', 'Menú');
-    hamburger.innerHTML = '<span></span><span></span><span></span>';
-    navbar.insertBefore(hamburger, navLinks);
+    // Guard: evitar crear el hamburger si ya existe
+    if (!navbar.querySelector('.nav-hamburger')) {
+        const hamburger = document.createElement('button');
+        hamburger.className = 'nav-hamburger';
+        hamburger.setAttribute('aria-label', 'Menú');
+        hamburger.innerHTML = '<span></span><span></span><span></span>';
+        navbar.insertBefore(hamburger, navLinks);
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('abierto');
-        navLinks.classList.toggle('abierto');
-    });
+        function abrirMenu() {
+            hamburger.classList.add('abierto');
+            navLinks.classList.add('abierto');
+            document.body.classList.add('menu-abierto');
+        }
 
-    navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
+        window.cerrarMenu = function () {
             hamburger.classList.remove('abierto');
             navLinks.classList.remove('abierto');
+            document.body.classList.remove('menu-abierto');
+        };
+
+        hamburger.addEventListener('click', () => {
+            if (hamburger.classList.contains('abierto')) {
+                window.cerrarMenu();
+            } else {
+                abrirMenu();
+            }
         });
-    });
+
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                window.cerrarMenu();
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (
+                hamburger.classList.contains('abierto') &&
+                !navbar.contains(e.target)
+            ) {
+                window.cerrarMenu();
+            }
+        });
+    }
 });

@@ -2,18 +2,26 @@ const ENVIO_GRATIS_MINIMO = 10000;
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-const panelCarrito      = document.getElementById('panel-carrito');
-const carritoOverlay    = document.getElementById('carrito-overlay');
+const panelCarrito       = document.getElementById('panel-carrito');
+const carritoOverlay     = document.getElementById('carrito-overlay');
 const btnCarritoFlotante = document.getElementById('btn-carrito-flotante');
-const btnCarritoCerrar  = document.getElementById('carrito-cerrar');
-const carritoItems      = document.getElementById('carrito-items');
-const carritoTotal      = document.getElementById('carrito-total');
-const carritoContador   = document.getElementById('carrito-contador');
+const btnCarritoCerrar   = document.getElementById('carrito-cerrar');
+const carritoItems       = document.getElementById('carrito-items');
+const carritoTotal       = document.getElementById('carrito-total');
+const carritoContador    = document.getElementById('carrito-contador');
 
 const enPages = window.location.pathname.includes('/pages/');
 const imgBase = enPages ? '../assets/' : 'assets/';
 
+function esMovilOTablet() {
+    return window.innerWidth <= 1024;
+}
+
 function abrirCarrito() {
+    // Si el menú hamburguesa está abierto, cerrarlo primero
+    if (typeof window.cerrarMenu === 'function') {
+        window.cerrarMenu();
+    }
     panelCarrito.classList.add('abierto');
     carritoOverlay.classList.add('abierto');
 }
@@ -30,7 +38,7 @@ carritoOverlay.addEventListener('click', cerrarCarrito);
 function actualizarCarrito() {
     if (carrito.length === 0) {
         carritoItems.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
-        carritoTotal.textContent  = '$0';
+        carritoTotal.textContent    = '$0';
         carritoContador.textContent = '0';
         localStorage.removeItem('carrito');
         actualizarEnvioGratis();
@@ -38,11 +46,11 @@ function actualizarCarrito() {
     }
 
     carritoItems.innerHTML = '';
-    let total = 0;
+    let total    = 0;
     let contador = 0;
 
     carrito.forEach((producto, index) => {
-        const precio = parsePrecio(producto.precio);
+        const precio  = parsePrecio(producto.precio);
         total    += precio * producto.cantidad;
         contador += producto.cantidad;
 
@@ -86,11 +94,11 @@ function eliminarProducto(index) {
 }
 
 function actualizarEnvioGratis() {
-    const subtotal  = carrito.reduce((sum, p) => sum + parsePrecio(p.precio) * p.cantidad, 0);
-    const falta     = Math.max(0, ENVIO_GRATIS_MINIMO - subtotal);
-    const progreso  = Math.min(100, (subtotal / ENVIO_GRATIS_MINIMO) * 100);
+    const subtotal   = carrito.reduce((sum, p) => sum + parsePrecio(p.precio) * p.cantidad, 0);
+    const falta      = Math.max(0, ENVIO_GRATIS_MINIMO - subtotal);
+    const progreso   = Math.min(100, (subtotal / ENVIO_GRATIS_MINIMO) * 100);
 
-    const msg       = document.getElementById('envio-gratis-msg');
+    const msg        = document.getElementById('envio-gratis-msg');
     const progresoEl = document.getElementById('envio-progreso');
 
     if (!msg || !progresoEl) return;

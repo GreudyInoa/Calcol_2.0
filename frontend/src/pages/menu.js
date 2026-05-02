@@ -85,5 +85,9 @@ modalBtnAgregar.addEventListener('click', () => {
 
     overlay.classList.remove('abierto');
     actualizarCarrito();
-    abrirCarrito();
+
+    // Solo abrir el panel lateral en desktop
+    if (!esMovilOTablet()) {
+        abrirCarrito();
+    }
 });
