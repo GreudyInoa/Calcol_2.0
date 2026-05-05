@@ -1,0 +1,22 @@
+.nosotros-container {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #0a0000;
+}
+
+.nosotros-container h1 {
+  font-family: var(--fuente-titulo);
+  font-size: 4rem;
+  color: var(--rojo);
+  margin-bottom: 2rem;
+}
+
+.mensaje-desarrollo {
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.5);
+}

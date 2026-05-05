@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;500;600&display=swap');
+
+:root {
+  --rojo: #D92B2B;
+  --rojo-oscuro: #b81f1f;
+  --negro: #111111;
+  --blanco: #ffffff;
+  --gris: #555555;
+  --sombra-fuerte: 0 8px 32px rgba(0,0,0,0.6);
+  --fuente-titulo: 'Bebas Neue', sans-serif;
+  --fuente-cuerpo: 'Nunito', sans-serif;
+  --fuente-producto: 'Oswald', sans-serif;
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-overlay: 200;
+  --z-panel: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  color: var(--blanco);
+}

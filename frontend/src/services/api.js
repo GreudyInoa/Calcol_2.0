@@ -1,4 +1,4 @@
-const API_BASE = '/Calcol_2.0/backend/public/api';
+const API_BASE = 'http://localhost:3000/api/v1';
 
 async function apiFetch(endpoint, body = null, method = 'POST') {
     const token = getToken();
