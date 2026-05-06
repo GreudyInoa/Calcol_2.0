@@ -1,128 +1,132 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useCart } from '../context/CartContext'
-import { formatPrecio, parsePrecio } from '../utils/formatters'
-import { getSession } from '../utils/auth'
+import { getSession, setSession, clearSession } from '../utils/auth'
+import { formatTelefono } from '../utils/formatters'
 import { api } from '../services/api'
-import './Checkout.css'
+import './Perfil.css'
 
-const COSTO_ENVIO = 2000
-
-export default function Pago() {
+export default function Perfil() {
   const navigate = useNavigate()
-  const { carrito, subtotal, limpiarCarrito } = useCart()
-  const checkout = JSON.parse(sessionStorage.getItem('calcol_checkout') || '{}')
-  const [metodoPago, setMetodoPago] = useState('efectivo')
-  const [loading, setLoading]       = useState(false)
+  const sesion   = getSession()
 
-  if (!checkout.direccion) { navigate('/entrega'); return null }
+  if (!sesion) { navigate('/login'); return null }
 
-  const handleConfirmar = async () => {
-    const sesion = getSession()
-    if (!sesion) { navigate('/login'); return }
-    setLoading(true)
-    const items = carrito.map(p => ({
-      producto_id: p.id,
-      cantidad:    p.cantidad,
-      nota:        p.nota || '',
-    }))
-    try {
-      const data = await api.crearPedido({
-        direccion:     checkout.direccion,
-        instrucciones: checkout.instrucciones || '',
-        items,
-        cubiertos:     checkout.cubiertos || 0,
-        salsa:         checkout.salsa || 0,
-        metodo_pago:   metodoPago,
-      })
-      if (data.error) { alert('Error: ' + data.error); setLoading(false); return }
-      limpiarCarrito()
-      sessionStorage.removeItem('calcol_checkout')
-      navigate('/confirmacion')
-    } catch { alert('Error de conexión'); setLoading(false) }
+  const [modalEditar,   setModalEditar]   = useState(false)
+  const [modalCerrar,   setModalCerrar]   = useState(false)
+  const [modalEliminar, setModalEliminar] = useState(false)
+  const [nombre,        setNombre]        = useState(sesion.nombre)
+  const [tel,           setTel]           = useState((sesion.telefono || '').replace(/\D/g, '').slice(-9))
+  const [errNombre,     setErrNombre]     = useState('')
+  const [errTel,        setErrTel]        = useState('')
+  const [datosActuales, setDatosActuales] = useState(sesion)
+
+  const iniciales = datosActuales.nombre.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase()
+
+  const guardarEditar = async () => {
+    setErrNombre(''); setErrTel('')
+    if (!nombre) { setErrNombre('El nombre es obligatorio'); return }
+    if (tel && tel.length !== 9) { setErrTel('El teléfono debe tener 9 dígitos'); return }
+    const telefono = tel ? '+56 9' + tel : datosActuales.telefono
+    const data = await api.editarPerfil({ nombre, telefono })
+    if (data.error) { setErrNombre(data.error); return }
+    const nuevo = { ...datosActuales, nombre, telefono }
+    setSession(nuevo)
+    setDatosActuales(nuevo)
+    setModalEditar(false)
   }
 
   return (
-    <>
+    <div className="perfil-page">
       <Navbar />
-      <div className="progreso-wrap">
-        <div className="progreso-step completado"><div className="progreso-circulo">✓</div><span>Carrito</span></div>
-        <div className="progreso-linea completada" />
-        <div className="progreso-step completado"><div className="progreso-circulo">✓</div><span>Entrega</span></div>
-        <div className="progreso-linea completada" />
-        <div className="progreso-step activo"><div className="progreso-circulo">3</div><span>Pago</span></div>
-        <div className="progreso-linea" />
-        <div className="progreso-step"><div className="progreso-circulo">4</div><span>Confirmación</span></div>
-      </div>
-
-      <div className="checkout-contenedor">
-        <div className="checkout-izquierda">
-          <div className="checkout-card">
-            <div className="checkout-card-header">
-              <img src="/assets/Carrito/dinero.png" alt="Pago" width="22" />
-              <h2 className="checkout-card-titulo">Método de pago</h2>
-            </div>
-            <div className="pago-opciones">
-              <label className="pago-opcion">
-                <input type="radio" name="pago" value="efectivo" checked={metodoPago === 'efectivo'} onChange={() => setMetodoPago('efectivo')} />
-                <img className="pago-opcion-icono" src="/assets/Carrito/dinero.png" alt="Efectivo" />
-                <div className="pago-opcion-texto"><strong>Efectivo</strong><span>Paga al momento de la entrega</span></div>
-              </label>
-              <label className="pago-opcion">
-                <input type="radio" name="pago" value="tarjeta" checked={metodoPago === 'tarjeta'} onChange={() => setMetodoPago('tarjeta')} />
-                <img className="pago-opcion-icono" src="/assets/Carrito/icono-visa.png" alt="Tarjeta" />
-                <div className="pago-opcion-texto"><strong>Tarjeta</strong><span>Débito o crédito</span></div>
-              </label>
-            </div>
-          </div>
-
-          <div className="checkout-card">
-            <div className="checkout-card-header">
-              <img src="/assets/Index/icono-ubi.png" alt="Entrega" />
-              <h2 className="checkout-card-titulo">Dirección de entrega</h2>
-              <button className="btn-editar-link" onClick={() => navigate('/entrega')}>Editar</button>
-            </div>
-            <div className="entrega-resumen">
-              <p>{checkout.direccion}</p>
-              {checkout.instrucciones && <p className="entrega-instrucciones">{checkout.instrucciones}</p>}
-            </div>
-          </div>
-        </div>
-
-        <div className="checkout-derecha">
-          <div className="checkout-card">
-            <div className="checkout-card-header">
-              <img src="/assets/Carrito/carrito-de-compras.png" alt="Pedido" width="20" />
-              <h2 className="checkout-card-titulo">Tu pedido</h2>
-              <span className="resumen-badge">{carrito.reduce((s, p) => s + p.cantidad, 0)} artículos</span>
-            </div>
-            {carrito.map((item, i) => (
-              <div className="carrito-item" key={i}>
-                <img className="carrito-item-img" src={item.imagen} alt={item.nombre} />
-                <div className="carrito-item-info">
-                  <span className="carrito-item-nombre">{item.nombre}</span>
-                  <span className="carrito-item-precio">{item.precio}</span>
-                </div>
-                <span className="resumen-badge">{item.cantidad}</span>
+      <div className="perfil-wrap">
+        <div className="perfil-card">
+          <div className="perfil-banner">
+            <div className="avatar-wrap">
+              <div className="avatar">{iniciales}</div>
+              <div className="avatar-info">
+                <h1>{datosActuales.nombre}</h1>
+                {datosActuales.rol !== 'cliente' && (
+                  <span className="badge-rol">{datosActuales.rol === 'admin' ? 'Administrador' : 'Empleado'}</span>
+                )}
               </div>
-            ))}
+            </div>
           </div>
-          <div className="checkout-card total-card">
-            <h2 className="checkout-card-titulo" style={{ marginBottom: 16 }}>Total del pedido</h2>
-            <div className="checkout-total-fila"><span>Subtotal</span><span>{formatPrecio(subtotal)}</span></div>
-            <div className="checkout-total-fila"><span>Costo de envío</span><span>{formatPrecio(COSTO_ENVIO)}</span></div>
-            <div className="checkout-total-fila checkout-total-final"><span>Total</span><span>{formatPrecio(subtotal + COSTO_ENVIO)}</span></div>
-            <button className="btn-hacer-pedido" onClick={handleConfirmar} disabled={loading}>
-              {loading ? 'Procesando...' : '🔥 Confirmar pedido'}
-            </button>
-            <div className="seguridad-badge">🔒 Pago 100% seguro y encriptado</div>
-            <Link className="btn-seguir-comprando" to="/entrega">← Volver a entrega</Link>
+
+          <div className="perfil-contenido">
+            <div className="seccion-titulo-wrap">
+              <h2 className="seccion-titulo">Mis datos</h2>
+              <button className="btn-editar-perfil" onClick={() => setModalEditar(true)}>✏️ Editar</button>
+            </div>
+            <div className="dato-item"><span className="dato-label">Nombre</span><span className="dato-valor">{datosActuales.nombre}</span></div>
+            <div className="dato-item"><span className="dato-label">Correo</span><span className="dato-valor">{datosActuales.email}</span></div>
+            <div className="dato-item"><span className="dato-label">Teléfono</span><span className="dato-valor">{formatTelefono(datosActuales.telefono)}</span></div>
+
+            <div className="acciones-wrap">
+              <button className="btn-cerrar" onClick={() => setModalCerrar(true)}>
+                <img src="/assets/General/icono-perfil.png" alt="" width="18" />
+                Cerrar sesión
+              </button>
+              <button className="btn-eliminar" onClick={() => setModalEliminar(true)}>
+                <img src="/assets/Carrito/bote-de-basura.png" alt="" width="18" />
+                Solicitar eliminación de cuenta
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+      {modalEditar && (
+        <div className="modal-overlay visible" onClick={e => e.target.className.includes('modal-overlay') && setModalEditar(false)}>
+          <div className="modal modal-editar">
+            <h3>Editar información</h3>
+            <div className="editar-campo">
+              <label>Nombre completo</label>
+              <input className="editar-input" type="text" value={nombre} onChange={e => setNombre(e.target.value)} />
+              {errNombre && <span className="editar-error">{errNombre}</span>}
+            </div>
+            <div className="editar-campo">
+              <label>Teléfono</label>
+              <div className="editar-tel-wrap">
+                <span className="editar-prefijo">+56 9</span>
+                <input className="editar-input" type="text" maxLength={9} value={tel} onChange={e => setTel(e.target.value.replace(/\D/g, ''))} />
+              </div>
+              {errTel && <span className="editar-error">{errTel}</span>}
+            </div>
+            <div className="modal-btns">
+              <button className="btn-cancelar" onClick={() => setModalEditar(false)}>Cancelar</button>
+              <button className="btn-guardar-editar" onClick={guardarEditar}>Guardar cambios</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {modalCerrar && (
+        <div className="modal-overlay visible">
+          <div className="modal">
+            <h3>¿Cerrar sesión?</h3>
+            <p>¿Estás seguro que deseas cerrar tu sesión?</p>
+            <div className="modal-btns">
+              <button className="btn-cancelar" onClick={() => setModalCerrar(false)}>Cancelar</button>
+              <button className="btn-confirmar-eliminar" onClick={() => { clearSession(); navigate('/') }}>Sí, cerrar sesión</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {modalEliminar && (
+        <div className="modal-overlay visible">
+          <div className="modal">
+            <h3>Eliminar cuenta</h3>
+            <p>Para eliminar tu cuenta envíanos un correo a <strong>contacto@calcol.cl</strong> con el asunto <strong>"Solicitud de eliminación de cuenta"</strong>.</p>
+            <div className="modal-btns">
+              <button className="btn-guardar-editar" onClick={() => setModalEliminar(false)}>Entendido</button>
+            </div>
+          </div>
+        </div>
+      )}
       <Footer />
-    </>
+    </div>
   )
 }

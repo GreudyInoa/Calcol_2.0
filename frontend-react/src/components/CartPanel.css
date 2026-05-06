@@ -219,15 +219,18 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 20px 20px;
+  margin: 0 20px 12px;    
   background: var(--rojo);
   color: var(--blanco);
   padding: 14px;
   border-radius: 30px;
+  border: none;           
+  cursor: pointer;         
   font-family: var(--fuente-cuerpo);
   font-weight: 700;
   text-decoration: none;
   transition: background 0.2s;
+  width: calc(100% - 40px); 
 }
 
 .btn-finalizar:hover { background: var(--rojo-oscuro); }
@@ -273,6 +276,19 @@
   color: var(--blanco);
   min-width: 24px;
   text-align: center;
+}
+
+.btn-finalizar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border: none;
+}
+
+.carrito-mensaje-vacio {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  margin: 0 20px 20px 20px;
 }
 
 @media (max-width: 900px) {

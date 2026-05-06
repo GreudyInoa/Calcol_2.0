@@ -76,8 +76,8 @@ const recuperarPassword = async ({ email }) => {
     usado: false,
   });
 
-  const appUrl = process.env.APP_URL || 'http://localhost';
-  const link   = `${appUrl}/pages/nueva-password.html?token=${token}`;
+  const appUrl = process.env.APP_URL || 'http://localhost:5173';
+  const link   = `${appUrl}/nueva-password?token=${token}`;
 
   await emailService.enviarRecuperacion(emailNormalizado, link);
 };

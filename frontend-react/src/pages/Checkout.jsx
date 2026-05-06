@@ -27,7 +27,7 @@ export default function Checkout() {
   }
 
   return (
-    <>
+    <div className="checkout-page">
       <Navbar />
       <div className="progreso-wrap">
         <div className="progreso-step activo"><div className="progreso-circulo">1</div><span>Carrito</span></div>
@@ -41,13 +41,17 @@ export default function Checkout() {
 
       <div className="checkout-contenedor">
         <div className="checkout-izquierda">
+
+          {/* ── Carrito ── */}
           <div className="checkout-card">
             <div className="checkout-card-header">
               <img src="/assets/Carrito/carrito-de-compras.png" alt="Carrito" />
               <h2 className="checkout-card-titulo">Tu carrito</h2>
               <span className="resumen-badge">{carrito.reduce((s, p) => s + p.cantidad, 0)} artículos</span>
             </div>
-            {carrito.length === 0 ? <p className="carrito-vacio">Tu carrito está vacío</p> : carrito.map((item, i) => (
+            {carrito.length === 0 ? (
+              <p className="carrito-vacio">Tu carrito está vacío</p>
+            ) : carrito.map((item, i) => (
               <div className="carrito-item" key={i}>
                 <img className="carrito-item-img" src={item.imagen} alt={item.nombre} />
                 <div className="carrito-item-info">
@@ -65,13 +69,19 @@ export default function Checkout() {
             ))}
           </div>
 
+          {/* ── Extras ── */}
           <div className="checkout-card">
             <div className="checkout-card-header">
+              <img src="/assets/Carrito/cruz-tenedor.png" alt="Extras" />
               <h2 className="checkout-card-titulo">Extras</h2>
             </div>
             <div className="extra-item">
               <div className="extra-info">
-                <div><strong>Cubiertos</strong><span>Incluye cubiertos desechables</span></div>
+                <img src="/assets/Carrito/tenedor-cruz-colores.png" alt="Cubiertos" className="extra-icono" />
+                <div>
+                  <strong>Cubiertos</strong>
+                  <span>Incluye cubiertos desechables</span>
+                </div>
               </div>
               <label className="toggle-switch">
                 <input type="checkbox" checked={cubiertos} onChange={e => setCubiertos(e.target.checked)} />
@@ -80,7 +90,11 @@ export default function Checkout() {
             </div>
             <div className="extra-item">
               <div className="extra-info">
-                <div><strong>Salsa de la casa</strong><span>Nuestra salsa criolla especial</span></div>
+                <img src="/assets/Carrito/salsa-de-casa.png" alt="Salsa" className="extra-icono" />
+                <div>
+                  <strong>Salsa de la casa</strong>
+                  <span>Nuestra salsa criolla especial</span>
+                </div>
               </div>
               <label className="toggle-switch">
                 <input type="checkbox" checked={salsa} onChange={e => setSalsa(e.target.checked)} />
@@ -88,6 +102,7 @@ export default function Checkout() {
               </label>
             </div>
           </div>
+
         </div>
 
         <div className="checkout-derecha">
@@ -100,12 +115,15 @@ export default function Checkout() {
             <div className="checkout-total-fila"><span>Subtotal</span><span>{formatPrecio(subtotal)}</span></div>
             <div className="checkout-total-fila"><span>Costo de envío</span><span>{formatPrecio(COSTO_ENVIO)}</span></div>
             <div className="checkout-total-fila checkout-total-final"><span>Total</span><span>{formatPrecio(subtotal + COSTO_ENVIO)}</span></div>
-            <button className="btn-hacer-pedido" onClick={handleContinuar}>Continuar →</button>
+            <button className="btn-hacer-pedido" onClick={handleContinuar}>
+              Continuar
+              <img src="/assets/Carrito/flecha.png" alt="→" className="btn-flecha" />
+            </button>
             <Link className="btn-seguir-comprando" to="/menu">← Seguir comprando</Link>
           </div>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }

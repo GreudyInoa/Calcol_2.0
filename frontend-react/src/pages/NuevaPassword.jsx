@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { api } from '../services/api'
-import './Login.css'
+import './NuevaPassword.css'
 
 export default function NuevaPassword() {
   const canvasRef = useRef(null)

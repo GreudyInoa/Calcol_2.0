@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../services/api'
-import './Login.css'
+import './Recuperar.css'
 
 export default function Recuperar() {
   const canvasRef = useRef(null)

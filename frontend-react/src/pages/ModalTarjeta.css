@@ -1,0 +1,270 @@
+/* ================================
+   ModalTarjeta.css
+   ================================ */
+
+.tc-modal {
+  background: linear-gradient(145deg, #1e0600, #2e0900);
+  border: 1px solid rgba(255,100,0,0.3);
+  border-radius: 24px;
+  padding: 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.85);
+  animation: slideUp 0.25s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.tc-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.tc-modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Preview ── */
+.tc-preview-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+  perspective: 1000px;
+}
+
+.tc-escena {
+  width: 320px;
+  height: 190px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tc-flip {
+  transform: rotateY(180deg);
+}
+
+.tc-cara {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ── Frente ── */
+.tc-frente {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tc-brillo {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.tc-chip {
+  width: 42px;
+  height: 32px;
+  background: linear-gradient(135deg, #d4a843, #f0d080, #b8872a);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.tc-chip-linea {
+  height: 2px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 2px;
+}
+
+.tc-logo {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.2);
+}
+
+.tc-logo-placeholder {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.8rem;
+  opacity: 0.4;
+}
+
+.tc-numero {
+  display: flex;
+  gap: 14px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.tc-inferior {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.tc-inferior-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tc-inferior-col--right {
+  text-align: right;
+}
+
+.tc-etiqueta {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tc-valor {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Reverso ── */
+.tc-reverso {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tc-banda-magnetica {
+  height: 44px;
+  background: #111;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tc-firma-wrap {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  gap: 10px;
+}
+
+.tc-firma-fondo {
+  flex: 1;
+  height: 36px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.06) 2px,
+    rgba(255,255,255,0.02) 2px,
+    rgba(255,255,255,0.02) 8px
+  );
+  border-radius: 4px;
+}
+
+.tc-cvv {
+  background: #ffffff;
+  color: #111;
+  font-weight: 900;
+  font-size: 1rem;
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  min-width: 56px;
+  text-align: center;
+}
+
+.tc-reverso-texto {
+  text-align: center;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  margin: 14px 0 0;
+  font-style: italic;
+}
+
+/* ── Form ── */
+.tc-form { display: flex; flex-direction: column; gap: 0; }
+
+.tc-fila-dos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tc-input-error {
+  border-color: #ff4d4d !important;
+}
+
+@media (max-width: 460px) {
+  .tc-escena { width: 280px; height: 166px; }
+  .tc-numero { font-size: 1.05rem; gap: 10px; }
+  .tc-modal { padding: 20px 16px; }
+}
+
+/* ── CVV con ojo ── */
+.tc-cvv-wrap {
+  position: relative;
+}
+
+.tc-cvv-wrap .checkout-input {
+  padding-right: 44px;
+}
+
+.tc-ojo-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.tc-ojo-btn:hover { color: #ffffff; }

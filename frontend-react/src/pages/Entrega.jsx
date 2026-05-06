@@ -9,15 +9,28 @@ import './Checkout.css'
 const COSTO_ENVIO = 2000
 const COMUNAS = ['Pudahuel', 'Cerro Navia', 'Lo Prado', 'Maipú', 'Renca', 'Quinta Normal', 'Estación Central']
 
+const soloLetras = (e) => {
+  if (e.type === 'paste') {
+    e.preventDefault()
+    const texto = e.clipboardData.getData('text')
+    const limpio = texto.replace(/[^a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s]/g, '')
+    document.execCommand('insertText', false, limpio)
+    return
+  }
+  if (e.key && e.key.length === 1 && !/^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s]$/.test(e.key)) {
+    e.preventDefault()
+  }
+}
+
 export default function Entrega() {
   const navigate = useNavigate()
   const { carrito, subtotal } = useCart()
-  const [comuna, setComuna]           = useState('')
-  const [direccion, setDireccion]     = useState('')
-  const [numero, setNumero]           = useState('')
-  const [depto, setDepto]             = useState('')
+  const [comuna, setComuna]               = useState('')
+  const [direccion, setDireccion]         = useState('')
+  const [numero, setNumero]               = useState('')
+  const [depto, setDepto]                 = useState('')
   const [instrucciones, setInstrucciones] = useState('')
-  const [errores, setErrores]         = useState({})
+  const [errores, setErrores]             = useState({})
 
   if (carrito.length === 0) { navigate('/checkout'); return null }
 
@@ -36,7 +49,7 @@ export default function Entrega() {
   }
 
   return (
-    <>
+    <div className="checkout-page">
       <Navbar />
       <div className="progreso-wrap">
         <div className="progreso-step completado"><div className="progreso-circulo">✓</div><span>Carrito</span></div>
@@ -56,32 +69,68 @@ export default function Entrega() {
               <h2 className="checkout-card-titulo">Dirección de entrega</h2>
             </div>
             <div className="entrega-grid">
+
               <div className="checkout-campo entrega-campo-full">
                 <label className="checkout-label">Comuna</label>
-                <select className="checkout-input checkout-select" value={comuna} onChange={e => { setComuna(e.target.value); setErrores(p => ({ ...p, comuna: '' })) }}>
+                <select
+                  className="checkout-input checkout-select"
+                  value={comuna}
+                  onChange={e => { setComuna(e.target.value); setErrores(p => ({ ...p, comuna: '' })) }}
+                >
                   <option value="">Selecciona tu comuna</option>
                   {COMUNAS.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
                 {errores.comuna && <span className="campo-error visible">{errores.comuna}</span>}
               </div>
+
               <div className="checkout-campo entrega-campo-full">
                 <label className="checkout-label">Calle</label>
-                <input className="checkout-input" type="text" placeholder="Ej: San Pablo" value={direccion} onChange={e => { setDireccion(e.target.value); setErrores(p => ({ ...p, direccion: '' })) }} />
+                <input
+                  className="checkout-input"
+                  type="text"
+                  placeholder="Ej: San Pablo"
+                  value={direccion}
+                  onChange={e => { setDireccion(e.target.value); setErrores(p => ({ ...p, direccion: '' })) }}
+                  onKeyDown={soloLetras}
+                  onPaste={soloLetras}
+                />
                 {errores.direccion && <span className="campo-error visible">{errores.direccion}</span>}
               </div>
+
               <div className="checkout-campo">
                 <label className="checkout-label">Número</label>
-                <input className="checkout-input" type="text" placeholder="Ej: 8648" value={numero} onChange={e => { setNumero(e.target.value.replace(/\D/g, '')); setErrores(p => ({ ...p, numero: '' })) }} />
+                <input
+                  className="checkout-input"
+                  type="text"
+                  placeholder="Ej: 8648"
+                  value={numero}
+                  onChange={e => { setNumero(e.target.value.replace(/\D/g, '')); setErrores(p => ({ ...p, numero: '' })) }}
+                />
                 {errores.numero && <span className="campo-error visible">{errores.numero}</span>}
               </div>
+
               <div className="checkout-campo">
                 <label className="checkout-label">Depto / Casa (opcional)</label>
-                <input className="checkout-input" type="text" placeholder="Ej: Depto 302" value={depto} onChange={e => setDepto(e.target.value)} />
+                <input
+                  className="checkout-input"
+                  type="text"
+                  placeholder="Ej: Depto 302"
+                  value={depto}
+                  onChange={e => setDepto(e.target.value)}
+                />
               </div>
+
               <div className="checkout-campo entrega-campo-full">
                 <label className="checkout-label">Instrucciones especiales (opcional)</label>
-                <input className="checkout-input" type="text" placeholder="Ej: Tocar el timbre..." value={instrucciones} onChange={e => setInstrucciones(e.target.value)} />
+                <input
+                  className="checkout-input"
+                  type="text"
+                  placeholder="Ej: Tocar el timbre..."
+                  value={instrucciones}
+                  onChange={e => setInstrucciones(e.target.value)}
+                />
               </div>
+
             </div>
           </div>
         </div>
@@ -104,18 +153,22 @@ export default function Entrega() {
               </div>
             ))}
           </div>
+
           <div className="checkout-card total-card">
             <h2 className="checkout-card-titulo" style={{ marginBottom: 16 }}>Resumen</h2>
             <div className="checkout-total-fila"><span>Subtotal</span><span>{formatPrecio(subtotal)}</span></div>
             <div className="checkout-total-fila"><span>Costo de envío</span><span>{formatPrecio(COSTO_ENVIO)}</span></div>
             <div className="checkout-total-fila checkout-total-final"><span>Total</span><span>{formatPrecio(subtotal + COSTO_ENVIO)}</span></div>
-            <button className="btn-hacer-pedido" onClick={handleContinuar}>Continuar al pago →</button>
+            <button className="btn-hacer-pedido" onClick={handleContinuar}>
+              Continuar al pago
+              <img src="/assets/Carrito/flecha.png" alt="→" className="btn-flecha" />
+            </button>
             <div className="seguridad-badge">🔒 Pago 100% seguro y encriptado</div>
             <Link className="btn-seguir-comprando" to="/checkout">← Volver al carrito</Link>
           </div>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }

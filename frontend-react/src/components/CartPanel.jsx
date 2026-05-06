@@ -1,11 +1,12 @@
 import { useCart } from '../context/CartContext'
-import { formatPrecio, parsePrecio } from '../utils/formatters'
-import { Link } from 'react-router-dom'
+import { formatPrecio } from '../utils/formatters'
+import { useNavigate } from 'react-router-dom'
 import './CartPanel.css'
 
 const ENVIO_GRATIS = 10000
 
 export default function CartPanel({ abierto, onCerrar }) {
+  const navigate = useNavigate()
   const { carrito, cambiarCantidad, eliminarItem, totalItems, subtotal } = useCart()
   const falta    = Math.max(0, ENVIO_GRATIS - subtotal)
   const progreso = Math.min(100, (subtotal / ENVIO_GRATIS) * 100)
@@ -64,10 +65,24 @@ export default function CartPanel({ abierto, onCerrar }) {
           <span id="carrito-total">{formatPrecio(subtotal)}</span>
         </div>
 
-        <Link className="btn-finalizar" to="/checkout" onClick={onCerrar}>
+        <button
+          className="btn-finalizar"
+          onClick={() => {
+            if (carrito.length === 0) return;
+            onCerrar();
+            navigate('/checkout');
+          }}
+          disabled={carrito.length === 0}
+        >
           Finalizar pedido
           <img className="icono-flecha" src="/assets/Carrito/flecha.png" alt="flecha" />
-        </Link>
+        </button>
+
+        {carrito.length === 0 && (
+          <p className="carrito-mensaje-vacio">
+            Agrega productos para continuar
+          </p>
+        )}
       </div>
     </>
   )
