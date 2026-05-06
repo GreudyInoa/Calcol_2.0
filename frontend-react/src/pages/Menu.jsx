@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import CartPanel from '../components/CartPanel'
+import CarritoFlotante from '../components/CarritoFlotante'
 import { useCart } from '../context/CartContext'
 import './Menu.css'
 
@@ -35,7 +36,7 @@ const PRODUCTOS = [
 ]
 
 export default function Menu() {
-  const { agregarItem, totalItems } = useCart()
+  const { agregarItem } = useCart()
   const [filtro, setFiltro]           = useState('completos')
   const [modal, setModal]             = useState(null)
   const [cantidad, setCantidad]       = useState(1)
@@ -58,7 +59,10 @@ export default function Menu() {
   }
 
   return (
-    <>
+    <div className="menu-page">
+      <div className="menu-fondo" />
+      <div className="menu-fondo-overlay" />
+
       <Navbar />
 
       <div className="menu-header">
@@ -132,13 +136,9 @@ export default function Menu() {
       )}
 
       <CartPanel abierto={cartAbierto} onCerrar={() => setCartAbierto(false)} />
-
-      <button className="btn-carrito-flotante" onClick={() => setCartAbierto(true)}>
-        <img className="icono-carrito-flotante" src="/assets/Carrito/carrito-de-compras.png" alt="Carrito" />
-        <span>{totalItems}</span>
-      </button>
+      <CarritoFlotante onClick={() => setCartAbierto(true)} />
 
       <Footer />
-    </>
+    </div>
   )
 }

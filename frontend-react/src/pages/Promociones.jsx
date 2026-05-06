@@ -2,27 +2,28 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import CartPanel from '../components/CartPanel'
+import CarritoFlotante from '../components/CarritoFlotante'
 import { useCart } from '../context/CartContext'
 import './Promociones.css'
 
 const PROMOS = [
-  { id: 25, nombre: 'Combo Yaroa Full',      desc: 'Yaroa de pollo + bebida + postre',    antes: '$4.500', ahora: '$3.200', badge: '-30%',    categoria: 'yaroa',      imagen: '/assets/Menu/Yaroa/Yaroa-pollo.avif' },
+  { id: 25, nombre: 'Combo Yaroa Full',      desc: 'Yaroa de pollo + bebida + postre',    antes: '$4.500', ahora: '$3.200', badge: '-30%',    categoria: 'yaroa',       imagen: '/assets/Menu/Yaroa/Yaroa-pollo.avif' },
   { id: 26, nombre: 'Combo Burger Caliente', desc: 'Bacon Burger + papas fritas + bebida', antes: '$5.000', ahora: '$3.800', badge: '¡Promo!', categoria: 'hamburguesa', imagen: '/assets/Menu/hamburguesas/Bacon Burger.jpg' },
   { id: 27, nombre: 'Combo Doble Completo',  desc: '2 completos + bebida familiar',        antes: '$4.200', ahora: '$3.400', badge: '-20%',    categoria: 'completo',    imagen: '/assets/Menu/Completos/completo-completo-pequeño.png' },
   { id: 28, nombre: 'Combo Burger Familiar', desc: '2 BBQ Burger + papas + 2 bebidas',    antes: '$8.000', ahora: '$5.600', badge: '-30%',    categoria: 'hamburguesa', imagen: '/assets/Menu/hamburguesas/Hamburguesa BBQ.webp' },
-  { id: 29, nombre: 'Yaroa Carne Especial',  desc: 'Yaroa de carne molida + bebida',      antes: '$4.000', ahora: '$2.900', badge: '¡Promo!', categoria: 'yaroa',      imagen: '/assets/Menu/Yaroa/yaroa-carne-molida.jpg' },
+  { id: 29, nombre: 'Yaroa Carne Especial',  desc: 'Yaroa de carne molida + bebida',      antes: '$4.000', ahora: '$2.900', badge: '¡Promo!', categoria: 'yaroa',       imagen: '/assets/Menu/Yaroa/yaroa-carne-molida.jpg' },
   { id: 30, nombre: 'Italiano Combo',        desc: 'Italiano XL + bebida + postre',       antes: '$3.800', ahora: '$2.850', badge: '-25%',    categoria: 'completo',    imagen: '/assets/Menu/Completos/completo-italiano-peque.png' },
-  { id: 31, nombre: 'Yaroa Mixta Combo',     desc: 'Yaroa mixta + bebida',                antes: '$3.500', ahora: '$2.800', badge: '-20%',    categoria: 'yaroa',      imagen: '/assets/Menu/Yaroa/yaroa-mixta.jpeg' },
+  { id: 31, nombre: 'Yaroa Mixta Combo',     desc: 'Yaroa mixta + bebida',                antes: '$3.500', ahora: '$2.800', badge: '-20%',    categoria: 'yaroa',       imagen: '/assets/Menu/Yaroa/yaroa-mixta.jpeg' },
   { id: 32, nombre: 'Stacker Combo',         desc: 'Stacker triple + papas + bebida',     antes: '$6.500', ahora: '$4.900', badge: '¡Promo!', categoria: 'hamburguesa', imagen: '/assets/Menu/hamburguesas/Hamburguesa Stacker.webp' },
 ]
 
 const FILTROS = ['todos', 'yaroa', 'hamburguesa', 'completo']
 
 export default function Promociones() {
-  const { agregarItem, totalItems } = useCart()
-  const [filtro, setFiltro]         = useState('todos')
-  const [modal, setModal]           = useState(null)
-  const [cantidad, setCantidad]     = useState(1)
+  const { agregarItem } = useCart()
+  const [filtro, setFiltro]           = useState('todos')
+  const [modal, setModal]             = useState(null)
+  const [cantidad, setCantidad]       = useState(1)
   const [cartAbierto, setCartAbierto] = useState(false)
 
   const promasFiltradas = PROMOS.filter(p => filtro === 'todos' || p.categoria === filtro)
@@ -118,11 +119,7 @@ export default function Promociones() {
       )}
 
       <CartPanel abierto={cartAbierto} onCerrar={() => setCartAbierto(false)} />
-
-      <button className="btn-carrito-flotante" onClick={() => setCartAbierto(true)}>
-        <img className="icono-carrito-flotante" src="/assets/Carrito/carrito-de-compras.png" alt="Carrito" />
-        <span>{totalItems}</span>
-      </button>
+      <CarritoFlotante onClick={() => setCartAbierto(true)} />
 
       <Footer />
     </>

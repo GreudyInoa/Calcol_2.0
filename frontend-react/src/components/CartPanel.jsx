@@ -68,9 +68,9 @@ export default function CartPanel({ abierto, onCerrar }) {
         <button
           className="btn-finalizar"
           onClick={() => {
-            if (carrito.length === 0) return;
-            onCerrar();
-            navigate('/checkout');
+            if (carrito.length === 0) return
+            onCerrar()
+            navigate('/checkout')
           }}
           disabled={carrito.length === 0}
         >

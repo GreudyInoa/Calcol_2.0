@@ -1,6 +1,6 @@
 .perfil-page {
     font-family: var(--fuente-cuerpo);
-    background: 
+     background: 
         radial-gradient(ellipse at top, rgba(220,40,0,0.5) 0%, transparent 50%),
         radial-gradient(ellipse at bottom left, rgba(255,80,0,0.3) 0%, transparent 50%),
         radial-gradient(ellipse at bottom right, rgba(180,20,0,0.3) 0%, transparent 50%),

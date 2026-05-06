@@ -13,13 +13,13 @@ export default function Perfil() {
 
   if (!sesion) { navigate('/login'); return null }
 
-  const [modalEditar, setModalEditar]   = useState(false)
-  const [modalCerrar, setModalCerrar]   = useState(false)
+  const [modalEditar, setModalEditar]     = useState(false)
+  const [modalCerrar, setModalCerrar]     = useState(false)
   const [modalEliminar, setModalEliminar] = useState(false)
-  const [nombre, setNombre]             = useState(sesion.nombre)
-  const [tel, setTel]                   = useState((sesion.telefono || '').replace(/\D/g, '').slice(-9))
-  const [errNombre, setErrNombre]       = useState('')
-  const [errTel, setErrTel]             = useState('')
+  const [nombre, setNombre]               = useState(sesion.nombre)
+  const [tel, setTel]                     = useState((sesion.telefono || '').replace(/\D/g, '').slice(-9))
+  const [errNombre, setErrNombre]         = useState('')
+  const [errTel, setErrTel]               = useState('')
   const [datosActuales, setDatosActuales] = useState(sesion)
 
   const iniciales = datosActuales.nombre.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase()
@@ -38,7 +38,7 @@ export default function Perfil() {
   }
 
   return (
-    <>
+    <div className="perfil-page">
       <Navbar />
       <div className="perfil-wrap">
         <div className="perfil-card">
@@ -126,7 +126,8 @@ export default function Perfil() {
           </div>
         </div>
       )}
+
       <Footer />
-    </>
+    </div>
   )
 }
